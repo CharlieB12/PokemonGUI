@@ -32,7 +32,7 @@ class App:
         self.title = tk.Label(parent, font=("Times New Roman", 14), text='Pokemon:')
         self.combobox = ComboBox(parent)
         self.button = tk.Button(parent, width=10, text="Submit", command=self.submit)
-        self.textbox = tk.Text(parent, width=59, height=8, state='disabled')
+        self.textbox = tk.Text(parent, width=59, height=8, font=("Times New Roman", 14), state='disabled')
 
         self.textbox.place(x=10, y=40)
         self.combobox.box.grid(column=1, row=1, padx=20, pady=5)
@@ -43,9 +43,9 @@ class App:
     def submit(self):
         pokemonIndex = df[df['Name'] == self.combobox.string_var.get()].index[0]
         pokemon = Pokemon(pokemonIndex)
-        text = f'''Name: {pokemon.name}        HP: {pokemon.hp}       Attack: {pokemon.attack}
-              
-Type: {pokemon.type}
+        text = f'''Name: {pokemon.name}        Type: {pokemon.type}   
+            
+Attack: {pokemon.attack}        HP: {pokemon.hp}
         '''
         self.textbox.configure(state='normal')
         self.textbox.delete('1.0', 'end')
